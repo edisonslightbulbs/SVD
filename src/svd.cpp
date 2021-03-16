@@ -36,7 +36,7 @@ std::vector<Point> svd::compute(std::vector<Point>& points)
     std::vector<Point> roi;
 
     /** if the point-norm form is satisfied, corresponding point sits on plane */
-    const double E_MAX = 30.0;
+    const double E_MAX = 100.0;
     const double E_MIN = -130.0;
 
     int index = 0;
