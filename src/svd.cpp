@@ -1,6 +1,5 @@
 #include <Eigen/Dense>
 
-#include <io.h>
 #include "svd.h"
 #include "logger.h"
 #include "timer.h"
@@ -53,7 +52,6 @@ std::vector<Point> svd::compute(std::vector<Point>& points)
             }
             index ++;
         }
-        //IO::write(solutions);
         LOG(INFO) << timer.getDuration() << " ms: region growing";
 
         return roi;
