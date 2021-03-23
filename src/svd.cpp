@@ -1,7 +1,7 @@
 #include <Eigen/Dense>
 
-#include "svd.h"
 #include "logger.h"
+#include "svd.h"
 #include "timer.h"
 
 std::vector<Point> svd::compute(std::vector<Point>& points)
@@ -34,22 +34,23 @@ std::vector<Point> svd::compute(std::vector<Point>& points)
     /** container for growing region of interest */
     std::vector<Point> proposal;
 
-    /** if the point-norm form is satisfied, corresponding point sits on plane */
-    const double E_MAX = 0.0;
-    const double E_MIN = -500.0;
+    /** if the point-norm form is satisfied, corresponding point sits on plane
+     */
+    const double E_MAX = 350.0;
+    const double E_MIN = -350.0;
 
     int index = 0;
-    for(auto point: points){
-        Eigen::Vector3d v(pointsMat(index, xCol), pointsMat(index, yCol), pointsMat(index, zCol));
+    for (auto point : points) {
+        Eigen::Vector3d v(pointsMat(index, xCol), pointsMat(index, yCol),
+            pointsMat(index, zCol));
 
         /** grow region */
         if (n.dot(v) < E_MAX && n.dot(v) > E_MIN) {
-                proposal.push_back(point);
-            }
-            index ++;
+            proposal.push_back(point);
         }
-
-    LOG(INFO) << timer.getDuration() << " ms: region growing";
-        return proposal;
+        index++;
     }
 
+    LOG(INFO) << timer.getDuration() << " ms: region growing";
+    return proposal;
+}
