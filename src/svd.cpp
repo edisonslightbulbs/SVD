@@ -1,12 +1,9 @@
 #include <Eigen/Dense>
 
-#include "logger.h"
 #include "svd.h"
-#include "timer.h"
 
 std::vector<Point> svd::compute(std::vector<Point>& points)
 {
-    Timer timer;
     /** compute centroid */
     Point centroid = Point::centroid(points);
 
@@ -50,7 +47,5 @@ std::vector<Point> svd::compute(std::vector<Point>& points)
         }
         index++;
     }
-
-    LOG(INFO) << timer.getDuration() << " ms: region growing";
     return proposal;
 }
