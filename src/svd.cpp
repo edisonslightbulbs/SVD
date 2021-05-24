@@ -1,6 +1,8 @@
 #include "svd.h"
 
-svd::svd(const std::vector<Point>& points): m_points(points) {
+svd::svd(const std::vector<Point>& points, const int& flag)
+    : m_points(points)
+{
     // compute centroid
     m_centroid = Point::centroid(m_points);
 
@@ -21,20 +23,20 @@ svd::svd(const std::vector<Point>& points): m_points(points) {
     m_vectors.col(C1).array() -= (float)m_centroid.m_xyz[1];
     m_vectors.col(C2).array() -= (float)m_centroid.m_xyz[2];
 
-    // set flags for svd computation
-    int option = Eigen::ComputeThinU | Eigen::ComputeThinV;
-
     // compute singular value decomposition
-    m_usv = m_vectors.jacobiSvd(option);
+    m_usv = m_vectors.jacobiSvd(flag);
 }
 
-Eigen::Vector3d svd::getV3Normal(){
+Eigen::Vector3d svd::getV3Normal()
+{
     Eigen::MatrixXf normal = m_usv.matrixV().col(2);
-    Eigen::Vector3d m_v3Norm = Eigen::Vector3d(normal(0, C0), normal(1, C0), normal(2, C0));
+    Eigen::Vector3d m_v3Norm
+        = Eigen::Vector3d(normal(0, C0), normal(1, C0), normal(2, C0));
     return m_v3Norm;
 }
 
-std::vector<Eigen::Vector3d> svd::getUNormals(){
+std::vector<Eigen::Vector3d> svd::getUNormals()
+{
     // get normals computed for each of the X, Y, and Z vectors
     Eigen::MatrixXf X = m_usv.matrixU().col(0);
     Eigen::MatrixXf Y = m_usv.matrixU().col(1);
@@ -46,8 +48,8 @@ std::vector<Eigen::Vector3d> svd::getUNormals(){
     // collect normal vectors for each point
     int i = 0;
     std::vector<Eigen::Vector3d> normals;
-    for(const auto& point : m_points) {
-        Eigen::Vector3d normal( X(i, C0), Y(i, C1), Z(i, C2) );
+    for (const auto& point : m_points) {
+        Eigen::Vector3d normal(X(i, C0), Y(i, C1), Z(i, C2));
         normals.emplace_back(normal);
         i++;
     }
