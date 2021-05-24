@@ -18,7 +18,7 @@ svd::svd(const std::vector<Point>& points, const int& flag)
         row++;
     }
 
-    // translate points to directional vectors using centroid
+    // translate points to directional vectors from centroid
     m_vectors.col(C0).array() -= (float)m_centroid.m_xyz[0];
     m_vectors.col(C1).array() -= (float)m_centroid.m_xyz[1];
     m_vectors.col(C2).array() -= (float)m_centroid.m_xyz[2];

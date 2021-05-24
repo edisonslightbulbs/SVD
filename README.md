@@ -9,11 +9,13 @@
 #include "point.h"
 
 class svd {
+
 private:
     const int C0 = 0; // column 0
     const int C1 = 1; // column 1
     const int C2 = 2; // column 2
     std::vector<Point> m_points;
+
 public:
     Point m_centroid;                        // centroid of given set of points
     Eigen::MatrixXf m_vectors;               // points translated from centroid
