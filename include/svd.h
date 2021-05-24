@@ -6,7 +6,7 @@
 
 #include "point.h"
 
-class svd {
+class SVD {
 
 private:
     const int C0 = 0; // column 0
@@ -29,7 +29,7 @@ public:
      * @param points
      *   Give set of points.
      */
-    explicit svd(const std::vector<Point>& points, const int& flag);
+    SVD(const std::vector<Point>& points, const int& flag);
 
     /** getV3Normal
      *
