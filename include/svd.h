@@ -2,7 +2,6 @@
 #define SVD_H
 
 #include <Eigen/Dense>
-#include <utility>
 #include <vector>
 
 #include "point.h"
