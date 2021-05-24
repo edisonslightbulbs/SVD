@@ -1,6 +1,6 @@
 #include "svd.h"
 
-svd::svd(const std::vector<Point>& points, const int& flag)
+SVD::SVD(const std::vector<Point>& points, const int& flag)
     : m_points(points)
 {
     // compute centroid
@@ -27,7 +27,7 @@ svd::svd(const std::vector<Point>& points, const int& flag)
     m_usv = m_vectors.jacobiSvd(flag);
 }
 
-Eigen::Vector3d svd::getV3Normal()
+Eigen::Vector3d SVD::getV3Normal()
 {
     Eigen::MatrixXf normal = m_usv.matrixV().col(2);
     Eigen::Vector3d m_v3Norm
@@ -35,7 +35,7 @@ Eigen::Vector3d svd::getV3Normal()
     return m_v3Norm;
 }
 
-std::vector<Eigen::Vector3d> svd::getUNormals()
+std::vector<Eigen::Vector3d> SVD::getUNormals()
 {
     // get normals computed for each of the X, Y, and Z vectors
     Eigen::MatrixXf X = m_usv.matrixU().col(0);
