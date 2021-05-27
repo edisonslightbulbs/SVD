@@ -46,6 +46,7 @@ std::vector<Eigen::Vector3d> SVD::getUNormals()
     assert(m_points.size() == m_usv.matrixU().rows());
 
     // collect normal vectors for each point
+    // todo: optimize
     int i = 0;
     std::vector<Eigen::Vector3d> normals;
     for (const auto& point : m_points) {
