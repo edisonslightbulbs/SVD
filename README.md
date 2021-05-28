@@ -1,4 +1,4 @@
-#### A tiny library for implementing the sigular value decomposition (SVD)
+#### A tiny library for implementing the singular value decomposition (SVD) :mortar_board:
 
 *   the interface
 
@@ -49,7 +49,7 @@ public:
 
 ```
 
-* usage example 
+* usage example
 
 ```cpp
 #include <Eigen/Dense>
@@ -70,4 +70,4 @@ return 0;
 }
 ```
 
-*   There's and an example `Point` Class [here](https://github.com/edisonslightbulbs/point).
+*   Checkout a flexible `Point` struct [here](https://github.com/edisonslightbulbs/point).
