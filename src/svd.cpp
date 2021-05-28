@@ -45,14 +45,11 @@ std::vector<Eigen::Vector3d> SVD::getUNormals()
     // assert # of computed U normals tallies with # of points
     assert(m_points.size() == m_usv.matrixU().rows());
 
-    // collect normal vectors for each point
-    // todo: optimize
-    int i = 0;
-    std::vector<Eigen::Vector3d> normals;
-    for (const auto& point : m_points) {
+    // collect U normal vectors for each point
+    std::vector<Eigen::Vector3d> normals(m_points.size());
+    for (int i = 0; i < m_points.size(); i++) {
         Eigen::Vector3d normal(X(i, C0), Y(i, C1), Z(i, C2));
-        normals.emplace_back(normal);
-        i++;
+        normals[i] = normal;
     }
     return normals;
 }
