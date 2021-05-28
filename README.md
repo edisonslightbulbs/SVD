@@ -1,4 +1,4 @@
-#### Usage of this tiny svd lib
+#### A tiny library for implementing the sigular value decomposition (SVD)
 
 *   the interface
 
@@ -22,35 +22,34 @@ public:
     Eigen::JacobiSVD<Eigen::MatrixXf> m_usv; // computed USV solution
 
     /** svd
-     *    Constructs and a singular value decomposition
-     *    USV solution, i.e., the
-     *    1. [ U ] the unitary matrix,
-     *    2. [ S ] rectangular diagonal matrix, and
-     *    3. [ V ] the complex unitary matrix.
+     *    Computes USV on construction
+     *     U - the unitary matrix,
+     *     S - rectangular diagonal matrix, and
+     *     V - the complex unitary matrix.
      *
      * @param points
-     *   Give set of points.
+     *   The given set of points.
      */
     explicit svd(const std::vector<Point>& points, const int& flag);
 
     /** getV3Normal
      *
      * @retval
-     *   Normal vector from the complex unitary matrix.
+     *   Normal vector (v3) from the complex unitary matrix.
      */
     Eigen::Vector3d getV3Normal();
 
     /** getUNormal
      *
      * @retval
-     *   Normal vectors from the unitary matrix.
+     *   Normal vectors (U) from the unitary matrix.
      */
     std::vector<Eigen::Vector3d> getUNormals();
 };
 
 ```
 
-here's an example of how to use the interface
+* usage example 
 
 ```cpp
 #include <Eigen/Dense>
@@ -61,7 +60,7 @@ here's an example of how to use the interface
 int main(int argc, char* argv[]){
     std::vector<Point> points = readPoints();
 
-    // config flags for svd computation
+    // set svd computation flag
     int flag = Eigen::ComputeThinU | Eigen::ComputeThinV;
 
     // compute SVD
@@ -71,8 +70,4 @@ return 0;
 }
 ```
 
-*   You can find an example Point Class [here](https://github.com/edisonslightbulbs/point).
-
-*   The `readPoints` function can be implemented flexibly and therefore, left out.
-
-
+*   There's and an example `Point` Class [here](https://github.com/edisonslightbulbs/point).
