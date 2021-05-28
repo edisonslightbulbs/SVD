@@ -1,4 +1,5 @@
-#### A tiny library for implementing the singular value decomposition (SVD) :mortar_board:
+### :mortar_board: :mortar_board:
+#### A tiny library for implementing the singular value decomposition (SVD)
 
 *   the interface
 
