@@ -1,7 +1,6 @@
-### :mortar_board: :mortar_board: :mortar_board: :mortar_board:
-#### a tiny library for implementing the singular value decomposition (SVD)
+###### Helper for class singular value decomposition (SVD)
 
-*   the interface
+*   interface:
 
 ```cpp
 
@@ -50,7 +49,7 @@ public:
 
 ```
 
-* usage example
+*   usage:
 
 ```cpp
 #include <Eigen/Dense>
